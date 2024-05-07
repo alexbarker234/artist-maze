@@ -112,7 +112,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
         return (
             <div>
                 <div className="fixed z-10 w-full h-svh top-0 backdrop-blur-md" />
-                <div className="fixed z-20 p-8 inset-0 m-auto w-1/2 h-[90%] bg-slate-800 flex flex-col items-center rounded-lg overflow-y-auto">
+                <div className="fixed z-20 p-8 inset-0 m-auto sm:w-1/2 sm:h-[90%] bg-slate-800 flex flex-col items-center sm:rounded-lg overflow-y-auto">
                     <div className="flex gap-2 w-full justify-center text-center">
                         <Card icon={faStopwatch} title="Time Taken:" value={formatTime(secondsElapsed)} />
                         <Card icon={faPeopleArrows} title="Distance:" value={`${artistChain.length - 2}`} />
@@ -134,13 +134,13 @@ export default function Play({ params }: { params: { firstArtist: string; second
     return (
         <main className="mt-16">
             {artistPair != undefined ? (
-                <div className="w-1/2 m-auto">
-                    <h1>Timer: {formatTime(secondsElapsed)}</h1>
+                <div className="sm:w-1/2 m-auto">
+                    <div className="text-center m-2">Timer: {formatTime(secondsElapsed)}</div>
                     <ChosenArtists artistPair={artistPair} />
                     <ArtistChain artistChain={artistChain} onClickArtist={onClickChainArtist} />
                     {!hasWon ? (
                         relatedArtists != undefined ? (
-                            <div className="flex flex-wrap gap-x-4">
+                            <div className="flex flex-wrap gap-x-4 justify-center">
                                 {relatedArtists.map((artist, index) => {
                                     return <ArtistBox key={index} artist={artist} onClickArtist={onClickArtist} />;
                                 })}
