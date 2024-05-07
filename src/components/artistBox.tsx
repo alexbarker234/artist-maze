@@ -1,17 +1,25 @@
-import Image from "next/image";
-import NoArtist from "@/../public/NoArtistImg.svg";
-
+import { twMerge } from "tailwind-merge";
+import ArtistImage from "./artistImage";
 interface ArtistBoxProps {
     artist: Artist;
     className?: string;
     onClickArtist?: (event: React.MouseEvent, artist: Artist) => void;
 }
 
-export default function ArtistBox({ artist, className, onClickArtist }: ArtistBoxProps) {
+export default function ArtistBox({
+    artist,
+    className,
+    onClickArtist
+}: ArtistBoxProps) {
     return (
-        <div key={Math.random()} className={className}>
-            <div className="" onClick={(e) => onClickArtist && onClickArtist(e, artist)}>
-                {artist.imageURL ? <Image src={artist.imageURL} alt={artist.name} width={640} height={640} /> : <Image className="" src={NoArtist} alt={artist.name} />}
+        <div
+            className={twMerge(
+                "mx-auto mb-0 pb-8 w-44 h-64 relative flex flex-col overflow-y-hidden transition-opacity duration-200",
+                className
+            )}
+        >
+            <div onClick={(e) => onClickArtist && onClickArtist(e, artist)}>
+                <ArtistImage artist={artist} />
             </div>
             <div>{artist.name}</div>
         </div>

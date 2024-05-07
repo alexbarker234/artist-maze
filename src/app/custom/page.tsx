@@ -1,29 +1,35 @@
 "use client";
 import ArtistSearch from "@/components/artistSearch";
+import ChosenArtists from "@/components/chosenArtists";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function Home() {
     const router = useRouter();
-    const [artists, setArtists] = useState<Artist[]>([]);
+    const [artists, setArtists] = useState<ArtistPair>({});
 
     const onClickArtist = (event: React.MouseEvent, artist: Artist) => {
-        let newArtists = [...artists];
+        let newArtists: ArtistPair = { ...artists };
 
-        if (artists.length < 2) {
-            newArtists = [...artists, artist];
+        if (!artists.artist1) newArtists.artist1 = artist;
+        else if (!artists.artist2) newArtists.artist2 = artist;
+
+        if (newArtists.artist1 && newArtists.artist2) {
+            router.push(`/play/${newArtists.artist1.id}/${newArtists.artist2.id}`);
         }
-        if (artists.length == 1) {
-            router.push(`/play/${newArtists[0].id}/${newArtists[1].id}`);
-        }
+
         setArtists(newArtists);
     };
 
     return (
         <main style={{ marginTop: "4rem" }}>
-            {/* {artists[0] && <ArtistBox artist={artists[0]}></ArtistBox>}
-            {artists[1] && <ArtistBox artist={artists[1]}></ArtistBox>} */}
-            <ArtistSearch onClickArtist={onClickArtist}></ArtistSearch>
+            <ChosenArtists artistPair={artists} />
+            <ArtistSearch
+                // what a wild way to reset the search box
+                key={artists.artist1?.id ?? "" + artists.artist2?.id ?? ""}
+                onClickArtist={onClickArtist}
+                shouldSave={false}
+            ></ArtistSearch>
         </main>
     );
 }

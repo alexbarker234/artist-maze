@@ -23,9 +23,9 @@ export async function GET(req: Request) {
             const artist: Artist = {
                 id: relatedArist.id,
                 name: relatedArist.name,
-                imageURL: relatedArist.images[0].url,
+                imageURL: relatedArist.images[0]?.url ?? "",
                 popularity: relatedArist.popularity,
-                link: relatedArist.external_urls.spotify,
+                link: relatedArist.external_urls.spotify
             };
             artists.push(artist);
         });

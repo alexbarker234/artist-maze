@@ -7,8 +7,8 @@ interface Artist {
 }
 
 interface ArtistPair {
-    artist1: Artist;
-    artist2: Artist;
+    artist1?: Artist;
+    artist2?: Artist;
 }
 
 interface Track {
