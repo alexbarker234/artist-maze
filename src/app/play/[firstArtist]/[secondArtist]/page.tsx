@@ -170,7 +170,7 @@ function ArtistChain({
     return (
         <div className="flex m-4 flex-wrap gap-y-4">
             {artistChain.map((artist, index) => (
-                <div key={artist.id} className="flex">
+                <div key={index} className="flex">
                     <div
                         className="h-10 hover:opacity-50 transition-opacity cursor-pointer"
                         onClick={() => onClickArtist(index)}
@@ -192,7 +192,7 @@ function ArtistChainVertical({ artistChain }: { artistChain: Artist[] }) {
     return (
         <div className="flex m-4 flex-wrap flex-col w-1/2">
             {artistChain.map((artist, index) => (
-                <div key={artist.id} className="justify-center">
+                <div key={index} className="justify-center">
                     <div className="flex">
                         <div className="relative">
                             {index != 0 && index != artistChain.length - 1 && (
