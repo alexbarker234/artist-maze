@@ -9,7 +9,11 @@ import Link from "next/link";
 
 import NoArtist from "@/../public/NoArtistImg.svg";
 
-export default function ArtistSearch() {
+interface ArtistSearchProps {
+    onClickArtist?: (event: React.MouseEvent, artist: Artist) => void;
+}
+
+export default function ArtistSearch({ onClickArtist }: ArtistSearchProps) {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -54,7 +58,13 @@ export default function ArtistSearch() {
     );
 }
 
-function ArtistList({ items, isLoading }: { items: Artist[]; isLoading: boolean }) {
+interface ArtistListProps {
+    items: Artist[];
+    isLoading: boolean;
+    onClickArtist?: (event: React.MouseEvent, artist: Artist) => void;
+}
+
+function ArtistList({ items, isLoading, onClickArtist }: ArtistListProps) {
     if (isLoading)
         return (
             <div className={styles["items-container"]}>
@@ -68,13 +78,13 @@ function ArtistList({ items, isLoading }: { items: Artist[]; isLoading: boolean 
                 items.map((artist, index) => {
                     return (
                         <div key={Math.random()} className={styles["item-box"]} style={{ animationDelay: `${index * 0.05}s` }}>
-                            <Link href={`/explore/${artist.id}`} className={styles["artist-image"]}>
+                            <div className={styles["artist-image"]} onClick={(e) => onClickArtist && onClickArtist(e, artist)}>
                                 {artist.imageURL ? (
                                     <Image src={artist.imageURL} alt={artist.name} width={640} height={640} />
                                 ) : (
                                     <Image className={styles["no-img"]} src={NoArtist} alt={artist.name} />
                                 )}
-                            </Link>
+                            </div>
                             <div>{artist.name}</div>
                         </div>
                     );
