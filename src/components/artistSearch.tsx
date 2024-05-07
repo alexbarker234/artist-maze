@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Loading from "../app/loading";
 
+import { useSearch } from "@/hooks/search";
 import ArtistGrid from "./artistGrid";
 import ErrorIcon from "./errorIcon";
 
@@ -17,45 +18,26 @@ export default function ArtistSearch({ shouldSave = true, onClickArtist }: Artis
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const [artistList, setArtistList] = useState<Artist[]>([]);
-    const [searchState, setState] = useState<"ok" | "searching" | "error">("ok");
+    const [searchTerm, setSearchTerm] = useState("");
+    const { data: artists, isSuccess, isLoading, isFetched } = useSearch(searchTerm);
 
     const search = async (searchText: string) => {
-        if (searchState == "searching") return;
-        setState("searching");
-
-        if (shouldSave) router.replace(`${pathname}?search=${searchText}`);
-
-        // bug where token is fetched from cache first time
-        let attempts = 0;
-        let response: Response | undefined;
-        while (attempts < 2) {
-            response = await fetch(`/api/search?query=${searchText}`);
-            attempts++;
-            if (response.ok) break;
-        }
-        if (!response?.ok) {
-            setState("error");
-            return;
-        }
-
-        const data: Artist[] = await response.json();
-
-        setArtistList(data);
-        setState("ok");
+        setSearchTerm(searchText);
     };
+
+    function SearchResults() {
+        if (isLoading) return <Loading />;
+        if (!isFetched) return <></>;
+        if (!isSuccess) return <ErrorIcon className="mx-auto" />;
+        return <ArtistGrid artists={artists} onClickArtist={onClickArtist} />;
+    }
 
     return (
         <>
             <SearchBox runSearch={search} startValue={shouldSave ? searchParams.get("search") ?? "" : ""} />
-            {searchState === "error" ? (
-                <ErrorIcon className="mx-auto" />
-            ) : searchState === "searching" ? (
-                <Loading />
-            ) : (
-                <ArtistGrid artists={artistList} onClickArtist={onClickArtist} />
-            )}
-            {artistList.length == 0 && searchState === "ok" && <div className="text-center">Search for artists!</div>}
+            <SearchResults />
+
+            {(!artists || artists.length == 0) && !isLoading && <div className="text-center">Search for artists!</div>}
         </>
     );
 }

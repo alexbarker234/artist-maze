@@ -3,7 +3,7 @@ import Loading from "@/app/loading";
 import ArtistBox from "@/components/artistBox";
 import ArtistImage from "@/components/artistImage";
 import ChosenArtists from "@/components/chosenArtists";
-import { useArtist, useArtistPair, useRelatedArtists } from "@/hooks/artist";
+import { useArtistPair, useRelatedArtists } from "@/hooks/artist";
 import {
     IconDefinition,
     faArrowDown,
@@ -13,7 +13,7 @@ import {
     faStopwatch
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -28,9 +28,9 @@ export default function Play({ params }: { params: { firstArtist: string; second
     const [hasWon, setHasWon] = useState<boolean>(false);
     const [secondsElapsed, setSecondsElapsed] = useState(0);
     const [timerActive, setTimerActive] = useState(true);
+    const timerActiveRef = useRef(true);
 
     const { data: artistPair } = useArtistPair(params.firstArtist, params.secondArtist);
-    const { data: currentArtist } = useArtist(currentArtistId);
     const { data: relatedArtists } = useRelatedArtists(currentArtistId);
 
     // initialise
@@ -45,7 +45,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
         if (timerActive) {
             interval = setInterval(() => {
                 // check again incase
-                if (!timerActive) return;
+                if (!timerActiveRef.current) return;
                 setSecondsElapsed((seconds) => seconds + 1);
             }, 1000);
         }
@@ -54,6 +54,9 @@ export default function Play({ params }: { params: { firstArtist: string; second
             interval && clearInterval(interval);
         };
     }, [secondsElapsed]);
+    useEffect(() => {
+        timerActiveRef.current = timerActive;
+    }, [timerActive]);
 
     const onClickChainArtist = (index: number) => {
         const newArtistChain = artistChain.slice(0, index + 1);
