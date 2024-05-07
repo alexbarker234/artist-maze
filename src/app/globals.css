@@ -22,13 +22,3 @@ body {
 * {
     box-sizing: border-box;
 }
-
-a {
-    color: white;
-    text-decoration: none;
-    transition: opacity 0.1s;
-}
-
-a:hover {
-    opacity: 0.6;
-}
