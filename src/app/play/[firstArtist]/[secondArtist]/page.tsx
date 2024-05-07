@@ -41,7 +41,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
 
     // timer
     useEffect(() => {
-        let interval = null;
+        let interval: NodeJS.Timeout | null = null;
         if (timerActive) {
             interval = setInterval(() => {
                 // check again incase
