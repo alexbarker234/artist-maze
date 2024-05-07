@@ -1,7 +1,7 @@
 "use client";
 import Loading from "@/app/loading";
+import ArtistBox from "@/components/artistBox";
 import ArtistImage from "@/components/artistImage";
-import ArtistRow from "@/components/artistRow";
 import ChosenArtists from "@/components/chosenArtists";
 import { useArtist, useArtistPair, useRelatedArtists } from "@/hooks/artist";
 import {
@@ -64,7 +64,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
         }
     };
 
-    const onClickArtist = (event: React.MouseEvent, artist: Artist) => {
+    const onClickArtist = (artist: Artist) => {
         setArtistChain([...artistChain, artist]);
         setCurrentArtistId(artist.id);
 
@@ -127,6 +127,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
         );
     }
 
+    // omfg the nesting
     return (
         <main className="mt-16">
             {artistPair != undefined ? (
@@ -136,9 +137,11 @@ export default function Play({ params }: { params: { firstArtist: string; second
                     <ArtistChain artistChain={artistChain} onClickArtist={onClickChainArtist} />
                     {!hasWon ? (
                         relatedArtists != undefined ? (
-                            relatedArtists.map((artist, index) => {
-                                return <ArtistRow key={index} artist={artist} onClickArtist={onClickArtist} />;
-                            })
+                            <div className="flex flex-wrap gap-x-4">
+                                {relatedArtists.map((artist, index) => {
+                                    return <ArtistBox key={index} artist={artist} onClickArtist={onClickArtist} />;
+                                })}
+                            </div>
                         ) : (
                             <Loading />
                         )

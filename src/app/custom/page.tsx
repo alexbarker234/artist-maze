@@ -2,13 +2,13 @@
 import ArtistSearch from "@/components/artistSearch";
 import ChosenArtists from "@/components/chosenArtists";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
     const router = useRouter();
     const [artists, setArtists] = useState<ArtistPair>({});
 
-    const onClickArtist = (event: React.MouseEvent, artist: Artist) => {
+    const onClickArtist = (artist: Artist) => {
         let newArtists: ArtistPair = { ...artists };
 
         if (!artists.artist1) newArtists.artist1 = artist;
