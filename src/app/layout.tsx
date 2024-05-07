@@ -1,5 +1,6 @@
 import "./globals.css";
 import Logo from "./logo";
+import Providers from "./providers";
 
 export const metadata = {
     title: "Artist Maze",
@@ -11,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body>
                 <Logo />
-                {children}
+                <Providers>{children}</Providers>{" "}
             </body>
         </html>
     );

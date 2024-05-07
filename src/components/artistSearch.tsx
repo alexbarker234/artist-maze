@@ -49,11 +49,7 @@ export default function ArtistSearch({ onClickArtist }: ArtistSearchProps) {
     return (
         <>
             <SearchBox runSearch={search} startValue={searchParams.get("search") ?? ""} />
-            {searchState === "error" ? (
-                <div className={styles["error"]}>!</div>
-            ) : (
-                <ArtistList items={artistList} isLoading={searchState === "searching"}></ArtistList>
-            )}
+            {searchState === "error" ? <div className={styles["error"]}>!</div> : <ArtistList items={artistList} isLoading={searchState === "searching"} onClickArtist={onClickArtist}></ArtistList>}
         </>
     );
 }
@@ -79,11 +75,7 @@ function ArtistList({ items, isLoading, onClickArtist }: ArtistListProps) {
                     return (
                         <div key={Math.random()} className={styles["item-box"]} style={{ animationDelay: `${index * 0.05}s` }}>
                             <div className={styles["artist-image"]} onClick={(e) => onClickArtist && onClickArtist(e, artist)}>
-                                {artist.imageURL ? (
-                                    <Image src={artist.imageURL} alt={artist.name} width={640} height={640} />
-                                ) : (
-                                    <Image className={styles["no-img"]} src={NoArtist} alt={artist.name} />
-                                )}
+                                {artist.imageURL ? <Image src={artist.imageURL} alt={artist.name} width={640} height={640} /> : <Image className={styles["no-img"]} src={NoArtist} alt={artist.name} />}
                             </div>
                             <div>{artist.name}</div>
                         </div>

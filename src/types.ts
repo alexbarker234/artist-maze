@@ -6,6 +6,11 @@ interface Artist {
     link: string;
 }
 
+interface ArtistPair {
+    artist1: Artist;
+    artist2: Artist;
+}
+
 interface Track {
     id: string;
     name: string;
