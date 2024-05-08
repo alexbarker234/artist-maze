@@ -36,8 +36,8 @@ export default function Home() {
         <div>
             <ChosenArtists artistPair={artists} displayNames={true} loading={{ one: isLoading1, two: isLoading2 }} />
             <div className="flex justify-center mt-4">
-                <Button text="Reroll 1" icon={faRefresh} onClick={() => reroll(true)} />
-                <Button text="Reroll 2" icon={faRefresh} onClick={() => reroll(false)} />
+                <Button text="Reroll 1" icon={faRefresh} onClick={() => reroll(true)} className="mr-2 ml-2" />
+                <Button text="Reroll 2" icon={faRefresh} onClick={() => reroll(false)} className="mr-2 ml-2" />
             </div>
             <div className="flex justify-center mt-4">
                 <Button

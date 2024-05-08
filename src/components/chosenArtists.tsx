@@ -12,7 +12,7 @@ interface ChosenArtistsProps {
 
 export default function ChosenArtists({ artistPair, displayNames = true, loading }: ChosenArtistsProps) {
     return (
-        <div className="flex w-full justify-center m-auto">
+        <div className="flex w-full justify-center m-auto text-right">
             {displayNames && <ArtistName name={artistPair.artist1?.name} align="right" />}
             <ArtistItem artist={artistPair.artist1} loading={loading?.one} />
             <FontAwesomeIcon className="self-center mx-2" icon={faArrowRight} />
