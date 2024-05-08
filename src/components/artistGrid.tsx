@@ -15,6 +15,7 @@ export default function ArtistGrid({ artists, onClickArtist }: ArtistGridProps) 
                         key={index}
                         artist={artist}
                         onClickArtist={onClickArtist}
+                        className="sm:w-44 h-auto w-32"
                     />
                 );
             })}

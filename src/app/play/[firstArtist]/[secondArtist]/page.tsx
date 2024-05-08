@@ -1,6 +1,6 @@
 "use client";
 import Loading from "@/app/loading";
-import ArtistBox from "@/components/artistBox";
+import ArtistGrid from "@/components/artistGrid";
 import ArtistImage from "@/components/artistImage";
 import ChosenArtists from "@/components/chosenArtists";
 import { useArtistPair, useRelatedArtists } from "@/hooks/artist";
@@ -140,11 +140,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
                     <ArtistChain artistChain={artistChain} onClickArtist={onClickChainArtist} />
                     {!hasWon ? (
                         relatedArtists != undefined ? (
-                            <div className="flex flex-wrap gap-x-4 justify-center">
-                                {relatedArtists.map((artist, index) => {
-                                    return <ArtistBox key={index} artist={artist} onClickArtist={onClickArtist} />;
-                                })}
-                            </div>
+                            <ArtistGrid artists={relatedArtists} onClickArtist={onClickArtist} />
                         ) : (
                             <Loading />
                         )
