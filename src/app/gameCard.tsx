@@ -15,7 +15,8 @@ export default function GameCard(props: GameCardProps) {
         <Link
             className={clsx(
                 "p-8 flex-1 m-4 max-w-96 transition-all select-none border-2 border-slate-700 rounded-md hover:bg-gray-800 hover:scale-105 hover:cursor-pointer group",
-                { "text-gray-500 pointer-events-none": props.disabled }
+                { "text-gray-500 pointer-events-none": props.disabled },
+                { hidden: props.disabled }
             )}
             href={props.href}
         >
