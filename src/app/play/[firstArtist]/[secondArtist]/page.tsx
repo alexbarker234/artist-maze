@@ -132,7 +132,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
 
     // omfg the nesting
     return (
-        <main className="mt-16">
+        <div>
             {artistPair != undefined ? (
                 <div className="sm:w-1/2 m-auto">
                     <div className="text-center m-2">Timer: {formatTime(secondsElapsed)}</div>
@@ -156,7 +156,7 @@ export default function Play({ params }: { params: { firstArtist: string; second
                 <Loading />
             )}
             {hasWon && <WinScreen />}
-        </main>
+        </div>
     );
 }
 

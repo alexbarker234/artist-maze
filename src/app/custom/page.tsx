@@ -3,6 +3,7 @@ import ArtistSearch from "@/components/artistSearch";
 import ChosenArtists from "@/components/chosenArtists";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Loading from "../loading";
 
 export default function Home() {
     const router = useRouter();
@@ -21,15 +22,21 @@ export default function Home() {
         setArtists(newArtists);
     };
 
+    const areBothSelected = artists.artist1 && artists.artist2;
+
     return (
-        <main style={{ marginTop: "4rem" }}>
+        <div>
             <ChosenArtists artistPair={artists} />
-            <ArtistSearch
-                // what a wild way to reset the search box
-                key={artists.artist1?.id ?? "" + artists.artist2?.id ?? ""}
-                onClickArtist={onClickArtist}
-                shouldSave={false}
-            ></ArtistSearch>
-        </main>
+            {!areBothSelected ? (
+                <ArtistSearch
+                    // what a wild way to reset the search box
+                    key={artists.artist1?.id ?? "" + artists.artist2?.id ?? ""}
+                    onClickArtist={onClickArtist}
+                    shouldSave={false}
+                />
+            ) : (
+                <Loading />
+            )}
+        </div>
     );
 }

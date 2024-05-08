@@ -1,3 +1,5 @@
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import Link from "next/link";
 
@@ -5,6 +7,7 @@ interface GameCardProps {
     href: string;
     title: string;
     description: string;
+    icon: IconDefinition;
     disabled?: boolean;
 }
 export default function GameCard(props: GameCardProps) {
@@ -16,7 +19,10 @@ export default function GameCard(props: GameCardProps) {
             )}
             href={props.href}
         >
-            <div className="text-3xl">{props.title}</div>
+            <div className="flex mb-2">
+                <FontAwesomeIcon icon={props.icon} className="w-8 h-8 self-center mr-2" />
+                <div className="text-3xl">{props.title}</div>
+            </div>
             <div className="">{props.description}</div>
         </Link>
     );

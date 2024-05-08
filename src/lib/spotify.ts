@@ -15,16 +15,17 @@ export const getAccessToken = async () => {
             "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
-            grant_type: "refresh_token",
-            refresh_token
+            grant_type: "client_credentials"
         }),
-        //cache: 'no-store'
         next: {
             revalidate: 60 * 45
         }
     });
 
-    return response.json();
+    const data = await response.json();
+    //console.log(`Access Token recieved, expires in ${data.expires_in} seconds`);
+
+    return data;
 };
 
 export const getArtist = async (artistId: string, accessToken?: string) =>

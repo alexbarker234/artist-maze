@@ -28,8 +28,8 @@ export default function Home() {
     }, []);
 
     return (
-        <main style={{ marginTop: "4rem" }}>
+        <div>
             <ChosenArtists artistPair={artists} />
-        </main>
+        </div>
     );
 }
