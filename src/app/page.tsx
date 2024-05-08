@@ -1,12 +1,9 @@
 import { faCalendarDays, faPen, faShuffle } from "@fortawesome/free-solid-svg-icons";
 import GameCard from "./gameCard";
-import Loading from "./loading";
 
 export default function Home() {
     return (
         <>
-            {" "}
-            <Loading />
             <div className="flex justify-center flex-col sm:flex-row">
                 <GameCard title="Custom" description="Choose 2 artists" icon={faPen} href="/custom"></GameCard>
                 <GameCard
