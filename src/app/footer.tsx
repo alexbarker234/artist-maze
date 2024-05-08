@@ -5,7 +5,7 @@ export default function Footer() {
                 By{" "}
                 <a
                     href="https://github.com/alexbarker234"
-                    className="inline-block p-[0.25rem_0.15rem] rounded border-b border-blue-600 transition duration-300 hover:bg-blue-600 hover:scale-105"
+                    className="inline-block p-[0.25rem_0.15rem] rounded border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
                 >
                     Alex Barker
                 </a>
@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="float-right">
                 <a
                     href="https://github.com/alexbarker234/artist-maze"
-                    className="inline-block p-[0.25rem_0.15rem] rounded border-b border-blue-600 transition duration-300 hover:bg-blue-600 hover:scale-105"
+                    className="inline-block p-[0.25rem_0.15rem] rounded border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
                 >
                     GitHub
                 </a>
