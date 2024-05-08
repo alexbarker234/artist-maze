@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const requestArtist = async (artistId: string) => {
     const params = new URLSearchParams({
-        id: artistId,
+        id: artistId
     });
 
     const url = `/api/artist?${params.toString()}`;
@@ -19,7 +19,7 @@ export const useArtist = (artistId: string) => {
 
     return useQuery({
         queryKey: ["artist", artistId],
-        queryFn: queryFn,
+        queryFn: queryFn
     });
 };
 
@@ -28,15 +28,15 @@ export const useArtistPair = (firstArtistId: string, secondArtistId: string) => 
         queryKey: ["artistPair", firstArtistId, secondArtistId],
         queryFn: async () => ({
             artist1: await requestArtist(firstArtistId),
-            artist2: await requestArtist(secondArtistId),
-        }),
+            artist2: await requestArtist(secondArtistId)
+        })
     });
 };
 
 export const useRelatedArtists = (artistId: string) => {
     const queryFn = async () => {
         const params = new URLSearchParams({
-            id: artistId,
+            id: artistId
         });
 
         const url = `/api/artist/related?${params.toString()}`;
@@ -47,6 +47,25 @@ export const useRelatedArtists = (artistId: string) => {
 
     return useQuery({
         queryKey: ["relatedArtists", artistId],
+        queryFn: queryFn
+    });
+};
+
+export const useRandomArtist = (seed: number) => {
+    const queryFn = async () => {
+        const params = new URLSearchParams({
+            seed: seed.toString()
+        });
+
+        const url = `/api/artist/random?${params.toString()}`;
+
+        const response: Artist = await (await fetch(url)).json();
+        return response;
+    };
+
+    return useQuery({
+        queryKey: ["randomArtist", seed],
         queryFn: queryFn,
+        enabled: seed != 0
     });
 };

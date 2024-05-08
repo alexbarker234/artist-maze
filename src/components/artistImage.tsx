@@ -3,6 +3,7 @@ import Image from "next/image";
 
 export default function ArtistImage({ artist }: { artist: Artist }) {
     return (
+        // this eats through vercel free tier 😔 unoptimise!
         <div className="relative block h-full aspect-square transition duration-200 select-none bg-[var(--grey)] overflow-hidden">
             {artist.imageURL ? (
                 <Image unoptimized src={artist.imageURL} alt={artist.name} width={640} height={640} />

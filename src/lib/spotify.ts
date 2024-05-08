@@ -12,32 +12,35 @@ export const getAccessToken = async () => {
         method: "POST",
         headers: {
             Authorization: `Basic ${basic}`,
-            "Content-Type": "application/x-www-form-urlencoded",
+            "Content-Type": "application/x-www-form-urlencoded"
         },
         body: querystring.stringify({
             grant_type: "refresh_token",
-            refresh_token,
+            refresh_token
         }),
         //cache: 'no-store'
         next: {
-            revalidate: 60 * 45,
-        },
+            revalidate: 60 * 45
+        }
     });
 
     return response.json();
 };
 
-export const getArtist = async (artistId: string, accessToken?: string) => 
+export const getArtist = async (artistId: string, accessToken?: string) =>
     getFromSpotify(`https://api.spotify.com/v1/artists/${artistId}`, { accessToken });
 
 export const getArtistTopTracks = async (artistId: string, accessToken?: string) =>
     getFromSpotify(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=AU`, { accessToken });
-    
+
 export const getRelatedArtists = async (artistId: string, accessToken?: string) =>
     getFromSpotify(`https://api.spotify.com/v1/artists/${artistId}/related-artists`, { accessToken });
 
-export const searchArtists = async (query: string, accessToken?: string) =>
-    getFromSpotify(`https://api.spotify.com/v1/search?q=${query}&type=artist`, { accessToken });
+export const searchArtists = async (query: string, offset?: number, accessToken?: string) => {
+    if (!offset) offset = 0;
+
+    return getFromSpotify(`https://api.spotify.com/v1/search?q=${query}&type=artist&offset=${offset}`, { accessToken });
+};
 
 const getFromSpotify = async (endpoint: string, options?: { revalidate?: number; accessToken?: string }) => {
     if (!options) options = {};
@@ -48,8 +51,8 @@ const getFromSpotify = async (endpoint: string, options?: { revalidate?: number;
     }
     return fetch(endpoint, {
         headers: {
-            Authorization: `Bearer ${options.accessToken}`,
+            Authorization: `Bearer ${options.accessToken}`
         },
-        next: { revalidate: options.revalidate },
+        next: { revalidate: options.revalidate }
     });
 };
