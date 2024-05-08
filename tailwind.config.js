@@ -15,10 +15,16 @@ module.exports = {
                     to: {
                         opacity: "1"
                     }
+                },
+                wiggle: {
+                    "0%, 100%": { transform: "rotate(0deg)" },
+                    "20%, 60%": { transform: "rotate(20deg)" },
+                    "40%, 80%": { transform: "rotate(-20deg)" }
                 }
             },
             animation: {
-                fadeDropIn: "fadeDropIn 0.5s forwards"
+                fadeDropIn: "fadeDropIn 0.3s forwards",
+                wiggle: "wiggle 1s ease-in-out"
             }
         }
     },
