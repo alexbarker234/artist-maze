@@ -26,7 +26,7 @@ export default function Home() {
 
     return (
         <div>
-            <ChosenArtists artistPair={artists} />
+            <ChosenArtists artistPair={artists} displayNames={true} />
             {!areBothSelected ? (
                 <ArtistSearch
                     // what a wild way to reset the search box

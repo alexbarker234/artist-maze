@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Nav() {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-2">
             <Link href="/" className="flex w-fit p-1 transition-all hover:scale-105 hover:opacity-60 ">
                 <Image
                     src="/logo.png"

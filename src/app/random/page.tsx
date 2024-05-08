@@ -29,7 +29,7 @@ export default function Home() {
 
     return (
         <div>
-            <ChosenArtists artistPair={artists} />
+            <ChosenArtists artistPair={artists} displayNames={true} />
         </div>
     );
 }
