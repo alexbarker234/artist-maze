@@ -145,8 +145,6 @@ export default function Play({ params }: { params: { firstArtist: string; second
   }
   if (isErrorArtistPair || isErrorRelatedArtists) return <ErrorReturn />;
 
-  console.log;
-
   // omfg the nesting
   return (
     <div>
