@@ -1,30 +1,30 @@
 export interface Artist {
-    id: string;
-    name: string;
-    popularity: number;
-    imageURL: string;
-    link: string;
+  id: string;
+  name: string;
+  popularity: number;
+  imageURL: string;
+  link: string;
 }
 
 export interface ArtistPair {
-    artist1?: Artist;
-    artist2?: Artist;
+  artist1?: Artist;
+  artist2?: Artist;
 }
 
 export interface Track {
-    id: string;
+  id: string;
+  name: string;
+  link: string;
+  imageURL: string;
+  previewURL: string;
+  album: {
     name: string;
-    link: string;
-    imageURL: string;
-    previewURL: string;
-    album: {
-        name: string;
-    };
-    artist: {
-        name: string;
-    };
+  };
+  artist: {
+    name: string;
+  };
 }
 
 export interface ErrorResponse {
-    error: string;
+  error: string;
 }
