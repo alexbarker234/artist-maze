@@ -1,3 +1,4 @@
+import { Artist } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 
 export const useSearch = (searchTerm: string) => {

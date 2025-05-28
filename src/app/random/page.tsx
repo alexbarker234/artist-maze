@@ -2,6 +2,7 @@
 import Button from "@/components/button";
 import ChosenArtists from "@/components/chosenArtists";
 import { useRandomArtist } from "@/hooks/artist";
+import { ArtistPair } from "@/types/types";
 import { faPlay, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

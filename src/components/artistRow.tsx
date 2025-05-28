@@ -1,3 +1,4 @@
+import { Artist } from "@/types/types";
 import { twMerge } from "tailwind-merge";
 import ArtistImage from "./artistImage";
 interface ArtistBoxProps {

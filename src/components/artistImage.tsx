@@ -1,4 +1,5 @@
 import NoArtist from "@/../public/NoArtistImg.svg";
+import { Artist } from "@/types/types";
 import Image from "next/image";
 
 export default function ArtistImage({ artist }: { artist: Artist }) {

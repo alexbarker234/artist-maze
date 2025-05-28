@@ -5,6 +5,7 @@ import { useState } from "react";
 import Loading from "../app/loading";
 
 import { useSearch } from "@/hooks/search";
+import { Artist } from "@/types/types";
 import ArtistGrid from "./artistGrid";
 import ErrorIcon from "./errorIcon";
 

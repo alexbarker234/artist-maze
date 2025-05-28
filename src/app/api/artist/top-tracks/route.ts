@@ -1,4 +1,6 @@
-import { getArtist, getArtistTopTracks } from "@/lib/spotify";
+import { getArtistTopTracks } from "@/lib/spotify";
+import { SpotifyTrackResponse } from "@/types/spotifyAPI";
+import { ErrorResponse, Track } from "@/types/types";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -23,11 +25,11 @@ export async function GET(req: Request) {
                 imageURL: spotifyTrack.album.images.length > 0 ? spotifyTrack.album.images[0].url : "",
                 previewURL: spotifyTrack.preview_url || "",
                 album: {
-                    name: spotifyTrack.album.name,
+                    name: spotifyTrack.album.name
                 },
                 artist: {
-                    name: spotifyTrack.artists.length > 0 ? spotifyTrack.artists[0].name : "",
-                },
+                    name: spotifyTrack.artists.length > 0 ? spotifyTrack.artists[0].name : ""
+                }
             };
             return track;
         });

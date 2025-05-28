@@ -1,4 +1,6 @@
 import { searchArtists } from "@/lib/spotify";
+import { SpotifySearchResponse } from "@/types/spotifyAPI";
+import { Artist, ErrorResponse } from "@/types/types";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -24,7 +26,7 @@ export async function GET(req: Request) {
                 name: relatedArist.name,
                 imageURL: relatedArist.images.length > 0 ? relatedArist.images[0].url : "",
                 popularity: relatedArist.popularity,
-                link: relatedArist.external_urls.spotify,
+                link: relatedArist.external_urls.spotify
             };
             artists.push(artist);
         });

@@ -1,4 +1,6 @@
 import { getArtist } from "@/lib/spotify";
+import { SpotifyArtist } from "@/types/spotifyAPI";
+import { Artist, ErrorResponse } from "@/types/types";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
@@ -16,7 +18,13 @@ export async function GET(req: Request) {
 
         const artist: SpotifyArtist = await spotifyResponse.json();
 
-        const response: Artist = { id: artist.id, name: artist.name, imageURL: artist.images[0].url, popularity: artist.popularity, link: artist.external_urls.spotify };
+        const response: Artist = {
+            id: artist.id,
+            name: artist.name,
+            imageURL: artist.images[0].url,
+            popularity: artist.popularity,
+            link: artist.external_urls.spotify
+        };
         return NextResponse.json(response);
     } catch (e) {
         console.log(e);

@@ -1,4 +1,5 @@
 import Loading from "@/app/loading";
+import { Artist, ArtistPair } from "@/types/types";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";

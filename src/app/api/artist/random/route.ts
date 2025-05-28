@@ -1,4 +1,6 @@
 import { searchArtists } from "@/lib/spotify";
+import { SpotifySearchResponse } from "@/types/spotifyAPI";
+import { Artist, ErrorResponse } from "@/types/types";
 import { NextResponse } from "next/server";
 import seedrandom from "seedrandom";
 

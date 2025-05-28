@@ -1,4 +1,6 @@
 import { getRelatedArtists } from "@/lib/spotify";
+import { SpotifyArtistsResponse } from "@/types/spotifyAPI";
+import { Artist, ErrorResponse } from "@/types/types";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {

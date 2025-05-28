@@ -4,6 +4,7 @@ import ArtistGrid from "@/components/artistGrid";
 import ArtistImage from "@/components/artistImage";
 import ChosenArtists from "@/components/chosenArtists";
 import { useArtistPair, useRelatedArtists } from "@/hooks/artist";
+import { Artist } from "@/types/types";
 import {
     IconDefinition,
     faArrowDown,

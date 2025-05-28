@@ -1,3 +1,4 @@
+import { Artist, ArtistPair } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
 
 const requestArtist = async (artistId: string) => {

@@ -1,6 +1,7 @@
 "use client";
 import ArtistSearch from "@/components/artistSearch";
 import ChosenArtists from "@/components/chosenArtists";
+import { Artist, ArtistPair } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Loading from "../loading";

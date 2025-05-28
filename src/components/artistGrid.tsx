@@ -1,3 +1,4 @@
+import { Artist } from "@/types/types";
 import ArtistBox from "./artistBox";
 
 interface ArtistGridProps {
