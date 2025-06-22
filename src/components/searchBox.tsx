@@ -37,7 +37,7 @@ export default function SearchBox({ runSearch, startValue }: SearchBoxProps) {
         onChange={(e) => handleInputChange(e.currentTarget.value)}
         onKeyDown={handleKeyDown}
         placeholder="Search..."
-        className="w-full h-full bg-transparent outline-none p-3 border-2 border-white rounded text-white transition-colors hover:border-gray-300 focus:border-sky-600"
+        className="w-full h-full bg-transparent outline-hidden p-3 border-2 border-white rounded-sm text-white transition-colors hover:border-gray-300 focus:border-sky-600"
       />
     </div>
   );

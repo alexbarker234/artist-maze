@@ -17,7 +17,7 @@ export default function ArtistBox({ artist, animationDelay: delay, className, on
           "mb-0 pb-8 w-44 h-64 relative flex flex-col overflow-y-hidden transition-opacity duration-200",
           className
         ),
-        { "animate-fadeDropIn opacity-0": delay != undefined }
+        { "animate-fade-drop-in opacity-0": delay != undefined }
       )}
       style={{ animationDelay: `${delay}s` }}
     >

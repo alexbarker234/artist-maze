@@ -198,7 +198,7 @@ function ArtistChainVertical({ artistChain }: { artistChain: Artist[] }) {
           <div className="flex">
             <div className="relative">
               {index != 0 && index != artistChain.length - 1 && (
-                <div className="absolute mr-4 right-[100%] top-[50%] -translate-y-1/2 font-bold">{index}.</div>
+                <div className="absolute mr-4 right-full top-[50%] -translate-y-1/2 font-bold">{index}.</div>
               )}
               <div className="h-16">
                 <ArtistImage artist={artist} />

@@ -16,7 +16,7 @@ export default function ArtistRow({ artist, className, onClickArtist }: ArtistBo
       )}
       onClick={(e) => onClickArtist && onClickArtist(e, artist)}
     >
-      <div className="relative block h-full aspect-square transition duration-200 select-none bg-[var(--grey)] overflow-hidden flex-shrink-0">
+      <div className="relative block h-full aspect-square transition duration-200 select-none bg-(--grey) overflow-hidden shrink-0">
         <ArtistImage artist={artist} />
       </div>
       <div className="text-3xl self-center">{artist.name}</div>

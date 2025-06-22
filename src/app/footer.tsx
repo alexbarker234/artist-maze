@@ -7,7 +7,7 @@ export default function Footer() {
           href="https://github.com/alexbarker234"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block p-[0.25rem_0.15rem] rounded border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
+          className="inline-block p-[0.25rem_0.15rem] rounded-sm border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
         >
           Alex Barker
         </a>
@@ -17,7 +17,7 @@ export default function Footer() {
           href="https://github.com/alexbarker234/artist-maze"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block p-[0.25rem_0.15rem] rounded border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
+          className="inline-block p-[0.25rem_0.15rem] rounded-sm border-b border-sky-600 transition duration-300 hover:bg-sky-600 hover:scale-105"
         >
           GitHub
         </a>
