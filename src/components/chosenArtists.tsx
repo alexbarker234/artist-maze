@@ -1,8 +1,7 @@
 import Loading from "@/app/loading";
 import { Artist, ArtistPair } from "@/types/types";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
+import { FaArrowRight } from "react-icons/fa";
 import ArtistImage from "./artistImage";
 
 interface ChosenArtistsProps {
@@ -16,7 +15,7 @@ export default function ChosenArtists({ artistPair, displayNames = true, loading
     <div className="flex w-full justify-center m-auto text-right">
       {displayNames && <ArtistName name={artistPair.artist1?.name} align="right" />}
       <ArtistItem artist={artistPair.artist1} loading={loading?.one} />
-      <FontAwesomeIcon className="self-center mx-2" icon={faArrowRight} />
+      <FaArrowRight className="self-center mx-2" />
       <ArtistItem artist={artistPair.artist2} loading={loading?.two} />
       {displayNames && <ArtistName name={artistPair.artist2?.name} align="left" />}
     </div>

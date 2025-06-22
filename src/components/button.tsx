@@ -1,16 +1,15 @@
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
 
 interface ButtonProps {
-  icon: IconDefinition;
+  icon: IconType;
   text: string;
   disabled?: boolean;
   className?: string;
   onClick?: () => void;
 }
 
-export default function Button({ icon, text, disabled, className, onClick }: ButtonProps) {
+export default function Button({ icon: Icon, text, disabled, className, onClick }: ButtonProps) {
   return (
     <button
       className={twMerge(
@@ -21,7 +20,7 @@ export default function Button({ icon, text, disabled, className, onClick }: But
       disabled={disabled}
     >
       <p className="mr-2">{text}</p>
-      <FontAwesomeIcon icon={icon} className="self-center" />
+      <Icon className="self-center" />
     </button>
   );
 }
