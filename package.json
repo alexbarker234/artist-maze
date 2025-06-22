@@ -30,6 +30,7 @@
     "@types/seedrandom": "^3.0.8",
     "postcss": "^8.4.38",
     "prettier": "^3.5.3",
+    "prettier-plugin-tailwindcss": "^0.6.13",
     "tailwindcss": "^4.1.10",
     "tailwindcss-animation-delay": "^2.0.2"
   }

@@ -13,7 +13,7 @@ export default function Button({ icon: Icon, text, disabled, className, onClick 
   return (
     <button
       className={twMerge(
-        "flex p-2 border-2 border-slate-700 rounded-md hover:bg-slate-700 transition-all disabled:opacity-50",
+        "flex cursor-pointer rounded-md border-2 border-slate-700 p-2 transition-all hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       onClick={() => onClick && onClick()}
