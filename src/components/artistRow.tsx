@@ -11,15 +11,15 @@ export default function ArtistRow({ artist, className, onClickArtist }: ArtistBo
   return (
     <div
       className={twMerge(
-        "mx-auto mb-8 h-40 relative flex flex-row overflow-y-hidden transition-opacity duration-200 gap-4 cursor-pointer hover:opacity-50 bg-gray-900",
+        "relative mx-auto mb-8 flex h-40 cursor-pointer flex-row gap-4 overflow-y-hidden bg-gray-900 transition-opacity duration-200 hover:opacity-50",
         className
       )}
       onClick={(e) => onClickArtist && onClickArtist(e, artist)}
     >
-      <div className="relative block h-full aspect-square transition duration-200 select-none bg-[var(--grey)] overflow-hidden flex-shrink-0">
+      <div className="relative block aspect-square h-full shrink-0 overflow-hidden bg-(--grey) transition duration-200 select-none">
         <ArtistImage artist={artist} />
       </div>
-      <div className="text-3xl self-center">{artist.name}</div>
+      <div className="self-center text-3xl">{artist.name}</div>
     </div>
   );
 }

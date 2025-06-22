@@ -38,10 +38,10 @@ export const useArtistPair = (firstArtistId: string, secondArtistId: string) => 
   });
 };
 
-export const useRelatedArtists = (artistId: string) => {
+export const useRelatedArtists = (artistName: string) => {
   const queryFn = async () => {
     const params = new URLSearchParams({
-      id: artistId
+      artistName
     });
 
     const url = `/api/artist/related?${params.toString()}`;
@@ -55,7 +55,7 @@ export const useRelatedArtists = (artistId: string) => {
   };
 
   return useQuery({
-    queryKey: ["relatedArtists", artistId],
+    queryKey: ["relatedArtists", artistName],
     queryFn: queryFn
   });
 };

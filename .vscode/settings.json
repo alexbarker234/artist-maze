@@ -1,6 +1,10 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "always"
+  },
+  "editor.tabSize": 2,
+  "files.associations": {
+    "*.css": "postcss"
   }
 }

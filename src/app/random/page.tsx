@@ -3,9 +3,9 @@ import Button from "@/components/button";
 import ChosenArtists from "@/components/chosenArtists";
 import { useRandomArtist } from "@/hooks/artist";
 import { ArtistPair } from "@/types/types";
-import { faPlay, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FaArrowsRotate, FaPlay } from "react-icons/fa6";
 
 export default function Home() {
   const router = useRouter();
@@ -36,14 +36,14 @@ export default function Home() {
   return (
     <div>
       <ChosenArtists artistPair={artists} displayNames={true} loading={{ one: isLoading1, two: isLoading2 }} />
-      <div className="flex justify-center mt-4">
-        <Button text="Reroll 1" icon={faRefresh} onClick={() => reroll(true)} className="mr-2 ml-2" />
-        <Button text="Reroll 2" icon={faRefresh} onClick={() => reroll(false)} className="mr-2 ml-2" />
+      <div className="mt-4 flex justify-center">
+        <Button text="Reroll 1" icon={FaArrowsRotate} onClick={() => reroll(true)} className="mr-2 ml-2" />
+        <Button text="Reroll 2" icon={FaArrowsRotate} onClick={() => reroll(false)} className="mr-2 ml-2" />
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="mt-4 flex justify-center">
         <Button
           text="Ready?"
-          icon={faPlay}
+          icon={FaPlay}
           disabled={!artists.artist1 || !artists.artist2}
           onClick={() => {
             if (!artists.artist1 || !artists.artist2) return;

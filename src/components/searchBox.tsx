@@ -30,14 +30,14 @@ export default function SearchBox({ runSearch, startValue }: SearchBoxProps) {
   }, []);
 
   return (
-    <div className="w-11/12 max-w-[700px] mx-auto my-8">
+    <div className="mx-auto my-8 w-11/12 max-w-[700px]">
       <input
         type="text"
         value={searchText}
         onChange={(e) => handleInputChange(e.currentTarget.value)}
         onKeyDown={handleKeyDown}
         placeholder="Search..."
-        className="w-full h-full bg-transparent outline-none p-3 border-2 border-white rounded text-white transition-colors hover:border-gray-300 focus:border-sky-600"
+        className="h-full w-full rounded-sm border-2 border-white bg-transparent p-3 text-white outline-hidden transition-colors hover:border-gray-300 focus:border-sky-600"
       />
     </div>
   );
