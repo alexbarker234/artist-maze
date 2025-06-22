@@ -27,7 +27,9 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
   const timerActiveRef = useRef(true);
 
   const { data: artistPair, isError: isErrorArtistPair } = useArtistPair(params.firstArtist, params.secondArtist);
-  const { data: relatedArtists, isError: isErrorRelatedArtists } = useRelatedArtists(currentArtistId);
+  const { data: relatedArtists, isError: isErrorRelatedArtists } = useRelatedArtists(
+    artistChain[artistChain.length - 1]?.name ?? ""
+  );
 
   // initialise
   useEffect(() => {
@@ -114,7 +116,7 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
             <Card icon={FaPeopleArrows} title="Distance:" value={`${artistChain.length - 2}`} />
           </div>
           <button
-            className="flex m-4 p-2 border-2 border-slate-700 rounded-md hover:bg-slate-700 transition-colors"
+            className="flex m-4 p-2 border-2 border-slate-700 rounded-md hover:bg-slate-700 transition-colors cursor-pointer"
             onClick={() => restart()}
           >
             <p className="mr-2">Restart</p>
@@ -149,7 +151,14 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
           <ArtistChain artistChain={artistChain} onClickArtist={onClickChainArtist} />
           {!hasWon ? (
             relatedArtists != undefined ? (
-              <ArtistGrid artists={relatedArtists} onClickArtist={onClickArtist} />
+              relatedArtists.length > 0 ? (
+                <ArtistGrid artists={relatedArtists} onClickArtist={onClickArtist} />
+              ) : (
+                <div className="text-center m-4 p-4">
+                  <p className="font-bold">Sorry</p>
+                  <p>No related artists found for this artist.</p>
+                </div>
+              )
             ) : (
               <Loading />
             )

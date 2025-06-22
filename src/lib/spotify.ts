@@ -34,9 +34,6 @@ export const getArtist = async (artistId: string, accessToken?: string) =>
 export const getArtistTopTracks = async (artistId: string, accessToken?: string) =>
   getFromSpotify(`https://api.spotify.com/v1/artists/${artistId}/top-tracks?market=AU`, { accessToken });
 
-export const getRelatedArtists = async (artistId: string, accessToken?: string) =>
-  getFromSpotify(`https://api.spotify.com/v1/artists/${artistId}/related-artists`, { accessToken });
-
 export const searchArtists = async (query: string, offset?: number, accessToken?: string) => {
   if (!offset) offset = 0;
 
