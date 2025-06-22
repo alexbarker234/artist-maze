@@ -11,6 +11,8 @@ export async function GET(req: Request) {
 
     const artists: Artist[] = [];
 
+    //const lastfmResponse = await getSimilarArtists(artistId);
+
     const spotifyResponse = await getRelatedArtists(artistId);
 
     if (spotifyResponse.status >= 400) {
