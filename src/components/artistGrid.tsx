@@ -8,7 +8,7 @@ interface ArtistGridProps {
 
 export default function ArtistGrid({ artists, onClickArtist }: ArtistGridProps) {
   return (
-    <div className="flex flex-wrap gap-x-4 justify-center">
+    <div className="flex flex-wrap justify-center gap-x-4">
       {artists.map((artist, index) => {
         return (
           <ArtistBox
@@ -16,7 +16,7 @@ export default function ArtistGrid({ artists, onClickArtist }: ArtistGridProps) 
             key={index}
             artist={artist}
             onClickArtist={onClickArtist}
-            className="sm:w-44 h-auto w-32"
+            className="h-auto w-32 sm:w-44"
           />
         );
       })}

@@ -4,7 +4,7 @@ import GameCard from "./gameCard";
 export default function Home() {
   return (
     <>
-      <div className="flex justify-center flex-col sm:flex-row">
+      <div className="flex flex-col justify-center sm:flex-row">
         <GameCard title="Custom" description="Choose 2 artists" icon={FaPen} href="/custom"></GameCard>
         <GameCard
           title="Daily"

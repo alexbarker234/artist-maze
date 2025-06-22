@@ -97,8 +97,8 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
     }
     function Card({ icon: Icon, value, title }: CardProps) {
       return (
-        <div className="p-8 flex-1 max-w-[20rem] flex border-2 border-slate-700 rounded-md">
-          <Icon className="self-center text-4xl float-start " />
+        <div className="flex max-w-[20rem] flex-1 rounded-md border-2 border-slate-700 p-8">
+          <Icon className="float-start self-center text-4xl" />
           <div className="grow">
             <p className="text-lg font-bold">{title}</p>
             <p>{value}</p>
@@ -109,14 +109,14 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
 
     return (
       <div>
-        <div className="fixed z-10 w-full h-svh top-0 backdrop-blur-md" />
-        <div className="fixed z-20 p-8 inset-0 m-auto sm:w-1/2 sm:h-[90%] bg-slate-800 flex flex-col items-center sm:rounded-lg overflow-y-auto">
-          <div className="flex gap-2 w-full justify-center text-center">
+        <div className="fixed top-0 z-10 h-svh w-full backdrop-blur-md" />
+        <div className="fixed inset-0 z-20 m-auto flex flex-col items-center overflow-y-auto bg-slate-800 p-8 sm:h-[90%] sm:w-1/2 sm:rounded-lg">
+          <div className="flex w-full justify-center gap-2 text-center">
             <Card icon={FaStopwatch} title="Time Taken:" value={formatTime(secondsElapsed)} />
             <Card icon={FaPeopleArrows} title="Distance:" value={`${artistChain.length - 2}`} />
           </div>
           <button
-            className="flex m-4 p-2 border-2 border-slate-700 rounded-md hover:bg-slate-700 transition-colors cursor-pointer"
+            className="m-4 flex cursor-pointer rounded-md border-2 border-slate-700 p-2 transition-colors hover:bg-slate-700"
             onClick={() => restart()}
           >
             <p className="mr-2">Restart</p>
@@ -130,7 +130,7 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
 
   function ErrorReturn() {
     return (
-      <div className="flex flex-col items-center gap-4 m-8">
+      <div className="m-8 flex flex-col items-center gap-4">
         <ErrorIcon className="text-6xl" />
         <div className="text-center">
           <p className="text-xl font-bold">Something went wrong!</p>
@@ -145,8 +145,8 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
   return (
     <div>
       {artistPair != undefined ? (
-        <div className="sm:w-1/2 m-auto">
-          <div className="text-center m-2">Timer: {formatTime(secondsElapsed)}</div>
+        <div className="m-auto sm:w-1/2">
+          <div className="m-2 text-center">Timer: {formatTime(secondsElapsed)}</div>
           <ChosenArtists artistPair={artistPair} />
           <ArtistChain artistChain={artistChain} onClickArtist={onClickChainArtist} />
           {!hasWon ? (
@@ -154,7 +154,7 @@ export default function Play(props: { params: Promise<{ firstArtist: string; sec
               relatedArtists.length > 0 ? (
                 <ArtistGrid artists={relatedArtists} onClickArtist={onClickArtist} />
               ) : (
-                <div className="text-center m-4 p-4">
+                <div className="m-4 p-4 text-center">
                   <p className="font-bold">Sorry</p>
                   <p>No related artists found for this artist.</p>
                 </div>
@@ -182,16 +182,16 @@ function ArtistChain({
   onClickArtist: (index: number) => void;
 }) {
   return (
-    <div className="flex m-4 flex-wrap gap-y-4">
+    <div className="m-4 flex flex-wrap gap-y-4">
       {artistChain.map((artist, index) => (
         <div key={index} className="flex">
-          <div className="h-10 hover:opacity-50 transition-opacity cursor-pointer" onClick={() => onClickArtist(index)}>
+          <div className="h-10 cursor-pointer transition-opacity hover:opacity-50" onClick={() => onClickArtist(index)}>
             <ArtistImage artist={artist} />
           </div>
           {index == artistChain.length - 1 ? (
-            <div className="self-center ml-2">{artist.name}</div>
+            <div className="ml-2 self-center">{artist.name}</div>
           ) : (
-            <FaArrowRight className="self-center mr-2 ml-2" />
+            <FaArrowRight className="mr-2 ml-2 self-center" />
           )}
         </div>
       ))}
@@ -201,22 +201,22 @@ function ArtistChain({
 
 function ArtistChainVertical({ artistChain }: { artistChain: Artist[] }) {
   return (
-    <div className="flex m-4 flex-wrap flex-col w-1/2">
+    <div className="m-4 flex w-1/2 flex-col flex-wrap">
       {artistChain.map((artist, index) => (
         <div key={index} className="justify-center">
           <div className="flex">
             <div className="relative">
               {index != 0 && index != artistChain.length - 1 && (
-                <div className="absolute mr-4 right-full top-[50%] -translate-y-1/2 font-bold">{index}.</div>
+                <div className="absolute top-[50%] right-full mr-4 -translate-y-1/2 font-bold">{index}.</div>
               )}
               <div className="h-16">
                 <ArtistImage artist={artist} />
               </div>
             </div>
-            <div className="self-center ml-2">{artist.name}</div>
+            <div className="ml-2 self-center">{artist.name}</div>
           </div>
-          <div className="w-16 flex justify-center">
-            {index != artistChain.length - 1 && <FaArrowDown className="self-center m-2 text-2xl" />}
+          <div className="flex w-16 justify-center">
+            {index != artistChain.length - 1 && <FaArrowDown className="m-2 self-center text-2xl" />}
           </div>
         </div>
       ))}

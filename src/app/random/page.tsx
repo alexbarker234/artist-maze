@@ -36,11 +36,11 @@ export default function Home() {
   return (
     <div>
       <ChosenArtists artistPair={artists} displayNames={true} loading={{ one: isLoading1, two: isLoading2 }} />
-      <div className="flex justify-center mt-4">
+      <div className="mt-4 flex justify-center">
         <Button text="Reroll 1" icon={FaArrowsRotate} onClick={() => reroll(true)} className="mr-2 ml-2" />
         <Button text="Reroll 2" icon={FaArrowsRotate} onClick={() => reroll(false)} className="mr-2 ml-2" />
       </div>
-      <div className="flex justify-center mt-4">
+      <div className="mt-4 flex justify-center">
         <Button
           text="Ready?"
           icon={FaPlay}

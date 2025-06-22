@@ -14,14 +14,14 @@ export default function GameCard(props: GameCardProps) {
   return (
     <Link
       className={clsx(
-        "p-8 flex-1 m-4 max-w-96 transition-all select-none border-2 border-slate-700 rounded-md hover:bg-gray-800 hover:scale-105 hover:cursor-pointer group",
-        { "text-gray-500 pointer-events-none": props.disabled },
+        "group m-4 max-w-96 flex-1 rounded-md border-2 border-slate-700 p-8 transition-all select-none hover:scale-105 hover:cursor-pointer hover:bg-gray-800",
+        { "pointer-events-none text-gray-500": props.disabled },
         { hidden: props.disabled }
       )}
       href={props.href}
     >
-      <div className="flex mb-2">
-        <IconComponent className="w-8 h-8 self-center mr-2 group-hover:animate-wiggle" />
+      <div className="mb-2 flex">
+        <IconComponent className="group-hover:animate-wiggle mr-2 h-8 w-8 self-center" />
         <div className="text-3xl">{props.title}</div>
       </div>
       <div className="">{props.description}</div>
