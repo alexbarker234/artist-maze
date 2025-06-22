@@ -15,7 +15,7 @@ import {
   faStopwatch
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, use } from "react";
 
 const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
@@ -23,7 +23,8 @@ const formatTime = (seconds: number) => {
   return `${minutes}m ${secondsLeft}s`;
 };
 
-export default function Play({ params }: { params: { firstArtist: string; secondArtist: string } }) {
+export default function Play(props: { params: Promise<{ firstArtist: string; secondArtist: string }> }) {
+  const params = use(props.params);
   const [currentArtistId, setCurrentArtistId] = useState<string>(params.firstArtist);
   const [artistChain, setArtistChain] = useState<Artist[]>([]);
   // game things
